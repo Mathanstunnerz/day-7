@@ -1,0 +1,70 @@
+a)
+
+var request = new XMLHttpRequest ( );
+ 
+request.open('GET', 'https://restcountries.com/v2/all', true)  ;
+request.send();
+request.onload= function(){ 
+
+    var date = request.response
+   var result = JSON.parse(date);
+  var arr = result.filter((ele)=>ele.region==="Asia")
+
+console.log(arr);
+}
+----------------------------------------------------------------------------
+b) var request = new XMLHttpRequest ( );
+ 
+request.open('GET', 'https://restcountries.com/v2/all', true)  ;
+request.send();
+request.onload= function(){ 
+
+    var date = request.response
+   var result = JSON.parse(date);
+  var arr = result.filter((ele)=>ele.population<200000)
+
+console.log(arr.map((ele)=>ele.name+" - "+"population"+" : "+ele.population));
+}
+------------------------------------------------------------------------------------
+c) var request = new XMLHttpRequest ( );
+ 
+request.open('GET', 'https://restcountries.com/v2/all', true)  ;
+request.send();
+request.onload= function(){ 
+var ttf = [];
+    var date = request.response
+   var result = JSON.parse(date);
+  var arr = result.map((ele)=>`name :${ele.name} capital:${ele.capital} flags:${ele.flags.png}`
+  )
+;console.log(arr);
+}
+----------------------------------------------------------------------------------------
+d) var request = new XMLHttpRequest ( );
+ 
+request.open('GET', 'https://restcountries.com/v2/all', true)  ;
+request.send();
+request.onload= function(){ 
+var ttf = [];
+    var date = request.response
+   var result = JSON.parse(date);
+  var arr = result.reduce((acc,cv)=>acc+cv.population,0),
+;console.log(arr);
+}
+---------------------------------------------------------------------------------------------
+e) var request = new XMLHttpRequest ( );
+ 
+request.open('GET', 'https://restcountries.com/v2/all', true)  ;
+request.send();
+request.onload= function(){ 
+
+    var date = request.response
+   var result = JSON.parse(date);
+  var arr = result.filter((ele)=>{
+   for(let index in ele.currencies) {
+       if(ele.currencies[index].code === 'USD') {
+           console.log(ele.name);
+       }
+
+ } })
+  
+}
